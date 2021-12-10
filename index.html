@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Escher's Gallery</title>
+		<link rel="shortcut icon" href="#" />
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+
+	<body>
+		<div id="container">
+			<div id="main">
+				<svg
+					id="chart"
+					xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink"
+				>
+					<!-- 方法1 -->
+					<!-- https://css-tricks.com/use-and-reuse-everything-in-svg-even-animations/ -->
+					<defs>
+						<polygon
+							id="unit-0"
+							points="0,0 16,0 16,16 32,16 32,32 0,32"
+							transform="scale(1.4,.8) rotate(-45) translate(-20, 132.3)"
+						/>
+						<polygon
+							id="unit-1"
+							points="0,0 32,0 32,32 16,32 16,16 0,16"
+							transform="skewY(30) translate(111, 22)"
+						/>
+						<polygon
+							id="unit-2"
+							points="0,0 32,0 32,16 16,16 16,32 0,32"
+							transform="skewY(-30) translate(143, 187)"
+						/>
+					</defs>
+
+					<!-- 方法2：更优雅，不过相应的 js 部分要跟着大变动所以暂用方法1，有机会再修改 -->
+					<!-- a=32, b=16*Math.sqrt(3)=27.71 b/2=13.86-->
+					<!-- <defs>
+                    <polygon id="unit-0" points="0,0 -27.71,-16 -13.86,-24 0,-16 13.86,-24 27.71,-16"
+                        transform="translate(100,100)" />
+                    <polygon id="unit-1" points="0,0 -27.71,-16 -13.86,-24 0,-16 13.86,-24 27.71,-16"
+                        transform="translate(100,100) rotate(-120)" />
+                    <polygon id="unit-2" points="0,0 -27.71,-16 -13.86,-24 0,-16 13.86,-24 27.71,-16"
+                        transform="translate(100,100) rotate(120)" />
+                </defs> -->
+				</svg>
+			</div>
+
+			<div id="tooltip" class="tooltip">
+				<div class="tooltip-title" id="title"></div>
+				<div class="tooltip-date" id="date"></div>
+				<div class="tooltip-type" id="type">
+					<span id="style"></span> | <span id="genre"></span>
+				</div>
+				<div class="tooltip-image" id="image"><img alt="" /></div>
+				<div class="tooltip-url" id="url">
+					<a target="_blank">go to link</a>
+				</div>
+			</div>
+		</div>
+		<script type="module" src="./chart.js"></script>
+		<script src="https://d3js.org/d3.v7.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+	</body>
+</html>
