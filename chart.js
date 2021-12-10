@@ -19,7 +19,7 @@ async function drawChart() {
 	// @ Group data in 7 groups
 	const dateGroup = d3.range(7).map(() => []);
 	data.forEach((d) => {
-		date = d.date;
+		const date = d.date;
 		if (date === "?") dateGroup[6].push(d);
 		else if (date < 1918) dateGroup[0].push(d);
 		else if (date < 1928) dateGroup[1].push(d);
@@ -28,7 +28,7 @@ async function drawChart() {
 		else if (date < 1958) dateGroup[4].push(d);
 		else if (date < 1973) dateGroup[5].push(d);
 	});
-	// console.log(dateGroup);
+	console.log(dateGroup);
 
 	// @ Set up colors to each style
 	const colorScale = {
@@ -84,7 +84,7 @@ async function drawChart() {
 	const artworkGroup = bounds
 		.append("g") // for chart only
 		.attr("class", "main-chart")
-		.attr("transform", `scale(1.25)`);
+		.attr("transform", `scale(1.10)`);
 
 	function drawArtwork() {
 		const artworks = artworkGroup
@@ -339,7 +339,7 @@ async function drawChart() {
 
 	// Unit Example
 	const drawAnno = () => {
-		const anno = bounds.append("g").attr("transform", "translate(730, 25)");
+		const anno = bounds.append("g").attr("transform", "translate(600, 25)");
 		const annoArtwork = anno
 			.append("use")
 			.attr("xlink:href", "#unit-0")
@@ -387,7 +387,7 @@ async function drawChart() {
 			.domain([0, d3.max(styleCount, (d) => d.count)])
 			.range([0, 200]);
 
-		const legend = bounds.append("g").attr("transform", "translate(1100, 40)");
+		const legend = bounds.append("g").attr("transform", "translate(960, 40)");
 
 		const legendTitle = legend
 			.append("text")
@@ -400,7 +400,7 @@ async function drawChart() {
 			.selectAll("g")
 			.data(styleCount.sort((a, b) => b.count - a.count))
 			.join("g")
-			.attr("transform", (d, i) => `translate(110, ${28 + 20 * i})`);
+			.attr("transform", (d, i) => `translate(110, ${28 + 18 * i})`);
 
 		const lengedStyleText = legendGroup
 			.append("text")
