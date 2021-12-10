@@ -370,7 +370,7 @@ async function drawChart() {
 	}
 
 	styleCount.forEach((d) => {
-		style = d.style;
+		const style = d.style;
 		if (style === "Optical art") d.style_cn = "视幻艺术";
 		else if (style === "Surrealism") d.style_cn = "超现实主义";
 		else if (style === "Expressionism") d.style_cn = "表现主义";
